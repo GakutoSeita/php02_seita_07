@@ -1,0 +1,10 @@
+@charset "utf-8";
+
+body {
+    font-family:"BIZ UDPGothic";
+    background-color: #FFFFCC;
+    margin: 0 auto;
+    color: #222222;
+    text-align: justify;
+    text-align: inter-deograph;
+}
