@@ -2,7 +2,7 @@
 //1.  DB接続します
 try {
   //Password:MAMP='root',XAMPP=''
-  $pdo = new PDO('mysql:dbname=arigatou_db;charset=utf8;host=localhost','root','root');
+  $pdo = new PDO('mysql:dbname=goldsheep3_arigatou_db;charset=utf8;host=mysql57.goldsheep3.sakura.ne.jp','goldsheep3','gakuto1209');
 } catch (PDOException $e) {
   exit('DBConnectError:'.$e->getMessage());
 }
