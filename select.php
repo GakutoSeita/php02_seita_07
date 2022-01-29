@@ -1,11 +1,15 @@
 <?php
 //1.  DB接続します
-try {
-  //Password:MAMP='root',XAMPP=''
-  $pdo = new PDO('mysql:dbname=goldsheep3_arigatou_db;charset=utf8;host=mysql57.goldsheep3.sakura.ne.jp','goldsheep3','gakuto1209');
-} catch (PDOException $e) {
-  exit('DBConnectError:'.$e->getMessage());
-}
+// try {
+//   $pdo = new PDO('mysql:dbname=goldsheep3_arigatou_db;charset=utf8;host=mysql57.goldsheep3.sakura.ne.jp','goldsheep3','gakuto1209');
+// } catch (PDOException $e) {
+//   exit('DBConnectError:'.$e->getMessage());
+// }
+
+// 課題(関数)
+require_once('funcs.php');
+$pdo = db_conn();
+
 
 //２．SQL文を用意(データ取得：SELECT)
 $stmt = $pdo->prepare("SELECT * FROM gs_arigatou_table");
@@ -25,8 +29,13 @@ if($status==false) {
   //FETCH_ASSOC=http://php.net/manual/ja/pdostatement.fetch.php
   while( $result = $stmt->fetch(PDO::FETCH_ASSOC)){ 
     $view .= "<p>";
+    $view .= '<a href="detail.php?id='.$result['id'].'">';
     $view .= $result['indate'].' : '.$result['name'].'さん から  '.$result['toname'].'さん への”ありがとう”'."<br>";
     $view .= '「'.$result['comment'].'」';
+    $view .= "</a>";
+    $view .= '<a href="delete.php?id=' . $result['id'] . '">';//追記
+    $view .= '  [削除]';//追記
+    $view .= '</a>';//追記
     $view .= "</p>";
   }
 
