@@ -1,4 +1,19 @@
 <?php
+
+//SESSIONスタート
+session_start();
+
+//関数を呼び出す
+require_once('funcs.php');
+
+//ログインチェック
+loginCheck();
+
+//以下ログインユーザーのみ
+$user_name = $_SESSION['name'];
+$kanri_flg = $_SESSION['kanri_flg'];//0が一般で1が管理者
+
+
 //1.  DB接続します
 // try {
 //   $pdo = new PDO('mysql:dbname=goldsheep3_arigatou_db;charset=utf8;host=mysql57.goldsheep3.sakura.ne.jp','goldsheep3','gakuto1209');
@@ -63,6 +78,7 @@ if($status==false) {
       <div class="navbar-header">
       <a class="navbar-brand" href="index.php">”ありがとう”を投稿する</a>
       </div>
+      <p><?= $user_name ?></p>
     </div>
   </nav>
 </header>
